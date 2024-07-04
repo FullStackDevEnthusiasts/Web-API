@@ -1,0 +1,414 @@
+1. How does the ASP.NET application respond when a user requests a URL from a browser?
+   - The request is routed to the appropriate controller.
+   - The controller processes the request and interacts with the model.
+   - The controller returns a view or data (for API) to the user.
+
+2. Can you explain attribute routing?
+   - Uses attributes to define routes directly on controller actions.
+   - Provides more control over URIs.
+   - Example: `[Route("api/products/{id}")]`.
+
+3. Can you explain the steps to implement web API versioning?
+   - Use URL path versioning (`/api/v1/products`).
+   - Query string versioning (`/api/products?version=1`).
+   - Header versioning (custom header like `api-version: 1.0`).
+   - Media type versioning (accept header like `application/vnd.myapi.v1+json`).
+
+4. How do you consume an external API/test API in an MVC application?
+   - Use `HttpClient` to make API calls.
+   - Configure the API endpoint and necessary headers.
+   - Handle responses and errors appropriately.
+   - Use dependency injection for `HttpClient`.
+
+5. Have you worked with action filters in ASP.NET Web API, and if so, how do you handle error exceptions, caching, and custom filters?
+   - Yes, action filters can handle cross-cutting concerns.
+   - For error exceptions: Use `ExceptionFilterAttribute` for global exception handling.
+   - For caching: Implement custom caching logic in `ActionFilterAttribute`.
+   - For custom filters: Create custom attributes inheriting from `ActionFilterAttribute`.
+
+6. Can you explain what action filters are used for in ASP.NET Web API?
+   - Execute code before or after action methods.
+   - Handle cross-cutting concerns like logging, caching, and error handling.
+   - Customizable for specific actions or controllers.
+
+7. How do you handle exceptions and caching in ASP.NET Web API using action filters?
+   - Exceptions: Implement `ExceptionFilterAttribute` to catch and handle exceptions globally.
+   - Caching: Use `OutputCacheAttribute` for caching responses or create custom caching logic in `ActionFilterAttribute`.
+
+8. Describe some best practices for writing stored procedures in SQL Server, especially regarding subqueries and cursors.
+   - Avoid using cursors; use set-based operations instead.
+   - Use indexed views or temporary tables for complex subqueries.
+   - Parameterize queries to prevent SQL injection.
+   - Optimize for performance with proper indexing and query planning.
+   - Keep procedures modular and maintainable.
+
+9. How would you handle authentication and authorization in a web application consuming APIs?
+   - Use OAuth or OpenID Connect for authentication.
+   - Implement token-based authentication (JWT).
+   - Use role-based or policy-based authorization.
+   - Secure API endpoints with proper authentication and authorization.
+
+10. Have you worked with API OpenID Connect?
+    - Yes, used for handling authentication and authorization.
+    - Integrates with identity providers for secure login.
+    - Supports token issuance for accessing APIs.
+
+11. What types of APIs have you worked with, particularly in setting them up for third-party interactions?
+    - RESTful APIs using HTTP/HTTPS.
+    - SOAP-based services with WSDL.
+    - Implemented OAuth for third-party integrations.
+    - Designed and documented APIs for external consumption.
+
+12. How would you ensure application performance, both at the database level and application level?
+    - Database level: Optimize queries, use indexing, and avoid unnecessary joins.
+    - Application level: Implement caching, use asynchronous programming, and minimize server round-trips.
+    - Monitor performance using tools like SQL Profiler and Application Insights.
+    - Perform load testing and optimize based on results.
+
+13. Can you discuss your experience with RESTful services?
+    - Designed and implemented RESTful APIs.
+    - Followed REST principles: statelessness, resource-based URIs, and proper use of HTTP methods.
+    - Implemented error handling, versioning, and documentation.
+    - Consumed RESTful APIs using `HttpClient` and handled responses.
+
+14. How do you handle global exception handling in your applications?
+    - Implement a global exception filter (`ExceptionFilterAttribute`).
+    - Use middleware in ASP.NET Core for centralized exception handling.
+    - Log exceptions using logging frameworks (e.g., Serilog, NLog).
+    - Provide user-friendly error messages and proper status codes.
+
+15. How do you implement rate limiting in a Web API?
+    - Use middleware to track request counts per client.
+    - Implement rate limiting policies (e.g., requests per minute).
+    - Return appropriate status codes (e.g., 429 Too Many Requests).
+    - Use third-party libraries like `AspNetCoreRateLimit`.
+
+16. Can you explain the differences between RESTful and SOAP-based services?
+    - RESTful: Uses HTTP, lightweight, resource-based URIs, JSON/XML payloads.
+    - SOAP: Protocol-based, uses XML, supports WS-* standards, more rigid structure.
+    - REST is more flexible and widely used for web services.
+    - SOAP offers built-in error handling and standardized security.
+
+17. How do you secure a Web API?
+    - Implement HTTPS to encrypt data.
+    - Use OAuth2 or OpenID Connect for authentication.
+    - Implement token-based authentication (JWT).
+    - Validate input to prevent injection attacks.
+    - Use API gateways for additional security layers.
+
+18. What are the benefits and drawbacks of using API Gateways?
+    - Benefits: Centralized management, security, rate limiting, load balancing, analytics.
+    - Drawbacks: Adds complexity, single point of failure, potential performance bottleneck.
+    - Useful for managing microservices architecture.
+
+19. Can you explain the concept of middleware in ASP.NET Core?
+    - Middleware: Software components that process HTTP requests/responses.
+    - Used for logging, authentication, exception handling, and more.
+    - Configured in the request pipeline.
+    - Can be custom or built-in.
+
+20. How do you handle large file uploads in a Web API?
+    - Configure maximum request size in settings.
+    - Use streaming to handle large files.
+    - Implement chunked uploads for better reliability.
+    - Validate file types and sizes for security.
+
+21. How do you document a Web API, and what tools do you use?
+    - Use tools like Swagger/OpenAPI for automatic documentation.
+    - Annotate API methods with XML comments.
+    - Provide examples and usage instructions.
+    - Generate interactive API documentation.
+
+22. How do you test Web APIs, and what tools do you prefer for automated testing?
+    - Use Postman or Insomnia for manual testing.
+    - Implement unit tests with frameworks like xUnit or NUnit.
+    - Use tools like RestSharp for integration testing.
+    - Implement continuous testing with CI/CD pipelines.
+
+23. Can you explain the CORS policy and how to configure it in a Web API?
+    - CORS: Cross-Origin Resource Sharing, controls resource access from different origins.
+    - Configure CORS in middleware to allow specific origins, methods, and headers.
+    - Use `[EnableCors]` attribute for specific controllers or actions.
+    - Ensure security by limiting allowed origins.
+
+24. How do you handle versioning in a RESTful API?
+    - Use URL path versioning (`/api/v1/resource`).
+    - Implement query string versioning (`?version=1`).
+    - Use header versioning (`api-version: 1.0`).
+    - Maintain backward compatibility.
+
+25. How do you manage API throttling and rate limiting in a high-traffic application?
+    - Implement middleware to track request counts.
+    - Use distributed caches like Redis to store rate limiting data.
+    - Apply rate limiting policies to ensure fair usage.
+    - Monitor and adjust limits based on application performance.
+
+26. **How do you document a Web API, and what tools do you use?**
+    - Use tools like Swagger/OpenAPI for automatic documentation.
+    - Annotate API methods with XML comments.
+    - Provide examples and usage instructions.
+    - Generate interactive API documentation.
+
+27. **How do you test Web APIs, and what tools do you prefer for automated testing?**
+    - Use Postman or Insomnia for manual testing.
+    - Implement unit tests with frameworks like xUnit or NUnit.
+    - Use tools like RestSharp for integration testing.
+    - Implement continuous testing with CI/CD pipelines.
+
+28. **Can you explain the CORS policy and how to configure it in a Web API?**
+    - CORS: Cross-Origin Resource Sharing, controls resource access from different origins.
+    - Configure CORS in middleware to allow specific origins, methods, and headers.
+    - Use `[EnableCors]` attribute for specific controllers or actions.
+    - Ensure security by limiting allowed origins.
+
+29. **How do you handle versioning in a RESTful API?**
+    - Use URL path versioning (`/api/v1/resource`).
+    - Implement query string versioning (`?version=1`).
+    - Use header versioning (`api-version: 1.0`).
+    - Maintain backward compatibility.
+
+30. **How do you manage API throttling and rate limiting in a high-traffic application?**
+    - Implement middleware to track request counts.
+    - Use distributed caches like Redis to store rate limiting data.
+    - Apply rate limiting policies to ensure fair usage.
+    - Monitor and adjust limits based on application performance.
+
+31. **How do you handle authentication and authorization in a web application consuming APIs?**
+    - Use OAuth or OpenID Connect for authentication.
+    - Implement token-based authentication (JWT).
+    - Use role-based or policy-based authorization.
+    - Secure API endpoints with proper authentication and authorization.
+
+32. **Have you worked with API OpenID Connect?**
+    - Yes, used for handling authentication and authorization.
+    - Integrates with identity providers for secure login.
+    - Supports token issuance for accessing APIs.
+
+33. **What types of APIs have you worked with, particularly in setting them up for third-party interactions?**
+    - RESTful APIs using HTTP/HTTPS.
+    - SOAP-based services with WSDL.
+    - Implemented OAuth for third-party integrations.
+    - Designed and documented APIs for external consumption.
+
+34. **How would you ensure application performance, both at the database level and application level?**
+    - Database level: Optimize queries, use indexing, and avoid unnecessary joins.
+    - Application level: Implement caching, use asynchronous programming, and minimize server round-trips.
+    - Monitor performance using tools like SQL Profiler and Application Insights.
+    - Perform load testing and optimize based on results.
+
+35. **Can you discuss your experience with RESTful services?**
+    - Designed and implemented RESTful APIs.
+    - Followed REST principles: statelessness, resource-based URIs, and proper use of HTTP methods.
+    - Implemented error handling, versioning, and documentation.
+    - Consumed RESTful APIs using `HttpClient` and handled responses.
+
+36. **How do you handle global exception handling in your applications?**
+    - Implement a global exception filter (`ExceptionFilterAttribute`).
+    - Use middleware in ASP.NET Core for centralized exception handling.
+    - Log exceptions using logging frameworks (e.g., Serilog, NLog).
+    - Provide user-friendly error messages and proper status codes.
+
+37. **Describe some best practices for writing stored procedures in SQL Server, especially regarding subqueries and cursors.**
+    - Avoid using cursors; use set-based operations instead.
+    - Use indexed views or temporary tables for complex subqueries.
+    - Parameterize queries to prevent SQL injection.
+    - Optimize for performance with proper indexing and query planning.
+    - Keep procedures modular and maintainable.
+
+38. **How do you consume an external API/test API in an MVC application?**
+    - Use `HttpClient` to make API calls.
+    - Configure the API endpoint and necessary headers.
+    - Handle responses and errors appropriately.
+    - Use dependency injection for `HttpClient`.
+
+39. **Have you worked with action filters in ASP.NET Web API, and if so, how do you handle error exceptions, caching, and custom filters?**
+    - Yes, action filters can handle cross-cutting concerns.
+    - For error exceptions: Use `ExceptionFilterAttribute` for global exception handling.
+    - For caching: Implement custom caching logic in `ActionFilterAttribute`.
+    - For custom filters: Create custom attributes inheriting from `ActionFilterAttribute`.
+
+40. **Can you explain what action filters are used for in ASP.NET Web API?**
+    - Execute code before or after action methods.
+    - Handle cross-cutting concerns like logging, caching, and error handling.
+    - Customizable for specific actions or controllers.
+
+41. **How do you handle exceptions and caching in ASP.NET Web API using action filters?**
+    - Exceptions: Implement `ExceptionFilterAttribute` to catch and handle exceptions globally.
+    - Caching: Use `OutputCacheAttribute` for caching responses or create custom caching logic in `ActionFilterAttribute`.
+
+42. **How do you implement middleware in ASP.NET Core?**
+    - Middleware components are added in the `Startup` class.
+    - Use `app.UseMiddleware<YourMiddleware>()` to add custom middleware.
+    - Middleware can handle requests, responses, or both.
+    - Order of middleware matters; it processes requests in the order they are added.
+
+43. **How do you implement rate limiting in ASP.NET Core?**
+    - Use middleware to track request counts per client.
+    - Implement rate limiting policies (e.g., requests per minute).
+    - Return appropriate status codes (e.g., 429 Too Many Requests).
+    - Use third-party libraries like `AspNetCoreRateLimit`.
+
+44. **How do you handle large file uploads in ASP.NET Core?**
+    - Configure maximum request size in `Startup` class.
+    - Use streaming to handle large files.
+    - Implement chunked uploads for better reliability.
+    - Validate file types and sizes for security.
+
+45. **How do you document an ASP.NET Core Web API, and what tools do you use?**
+    - Use Swagger/OpenAPI for automatic documentation.
+    - Annotate API methods with XML comments.
+    - Provide examples and usage instructions.
+    - Generate interactive API documentation.
+
+46. **How do you test an ASP.NET Core Web API, and what tools do you prefer for automated testing?**
+    - Use Postman or Insomnia for manual testing.
+    - Implement unit tests with frameworks like xUnit or NUnit.
+    - Use tools like RestSharp for integration testing.
+    - Implement continuous testing with CI/CD pipelines.
+
+47. **Can you explain the CORS policy in ASP.NET Core and how to configure it?**
+    - CORS: Cross-Origin Resource Sharing, controls resource access from different origins.
+    - Configure CORS in middleware to allow specific origins, methods, and headers.
+    - Use `[EnableCors]` attribute for specific controllers or actions.
+    - Ensure security by limiting allowed origins.
+
+48. **How do you handle versioning in an ASP.NET Core Web API?**
+    - Use URL path versioning (`/api/v1/resource`).
+    - Implement query string versioning (`?version=1`).
+    - Use header versioning (`api-version: 1.0`).
+    - Maintain backward compatibility.
+
+49. **How do you manage API throttling and rate limiting in ASP.NET Core for a high-traffic application?**
+    - Implement middleware to track request counts.
+    - Use distributed caches like Redis to store rate limiting data.
+    - Apply rate limiting policies to ensure fair usage.
+    - Monitor and adjust limits based on application performance.
+
+50. **How do you secure an ASP.NET Core Web API?**
+    - Implement HTTPS to encrypt data.
+    - Use OAuth2 or OpenID Connect for authentication.
+    - Implement token-based authentication (JWT).
+    - Validate input to prevent injection attacks.
+    - Use API gateways for additional security layers.
+
+51. **How do you handle global exception handling in ASP.NET Core?**
+    - Use middleware for centralized exception handling.
+    - Implement a global exception filter (`ExceptionFilterAttribute`).
+    - Log exceptions using logging frameworks (e.g., Serilog, NLog).
+    - Provide user-friendly error messages and proper status codes.
+
+52. **What are the benefits and drawbacks of using API Gateways in ASP.NET Core?**
+    - Benefits: Centralized management, security, rate limiting, load balancing, analytics.
+    - Drawbacks: Adds complexity, single point of failure, potential performance bottleneck.
+    - Useful for managing microservices architecture.
+
+53. **Can you explain the concept of middleware in ASP.NET Core?**
+    - Middleware: Software components that process HTTP requests/responses.
+    - Used for logging, authentication, exception handling, and more.
+    - Configured in the request pipeline.
+    - Can be custom or built-in.
+
+54. **How do you document a Web API in ASP.NET Core, and what tools do you use?**
+    - Use tools like Swagger/OpenAPI for automatic documentation.
+    - Annotate API methods with XML comments.
+    - Provide examples and usage instructions.
+    - Generate interactive API documentation.
+
+55. **How do you test a Web API in ASP.NET Core, and what tools do you prefer for automated testing?**
+    - Use Postman or Insomnia for manual testing.
+    - Implement unit tests with frameworks like xUnit or NUnit.
+    - Use tools like RestSharp for integration testing.
+    - Implement continuous testing with CI/CD pipelines.
+
+56. **How do you implement rate limiting in a Web API using ASP.NET Core?**
+    - Use middleware to track request counts per client.
+    - Implement rate limiting policies (e.g
+
+., requests per minute).
+    - Return appropriate status codes (e.g., 429 Too Many Requests).
+    - Use third-party libraries like `AspNetCoreRateLimit`.
+
+57. **How do you handle large file uploads in a Web API using ASP.NET Core?**
+    - Configure maximum request size in `Startup` class.
+    - Use streaming to handle large files.
+    - Implement chunked uploads for better reliability.
+    - Validate file types and sizes for security.
+
+58. **How do you document a Web API using ASP.NET Core, and what tools do you use?**
+    - Use Swagger/OpenAPI for automatic documentation.
+    - Annotate API methods with XML comments.
+    - Provide examples and usage instructions.
+    - Generate interactive API documentation.
+
+59. **How do you test a Web API using ASP.NET Core, and what tools do you prefer for automated testing?**
+    - Use Postman or Insomnia for manual testing.
+    - Implement unit tests with frameworks like xUnit or NUnit.
+    - Use tools like RestSharp for integration testing.
+    - Implement continuous testing with CI/CD pipelines.
+
+60. **Can you explain the CORS policy in a Web API using ASP.NET Core and how to configure it?**
+    - CORS: Cross-Origin Resource Sharing, controls resource access from different origins.
+    - Configure CORS in middleware to allow specific origins, methods, and headers.
+    - Use `[EnableCors]` attribute for specific controllers or actions.
+    - Ensure security by limiting allowed origins.
+
+61. **How do you handle versioning in a Web API using ASP.NET Core?**
+    - Use URL path versioning (`/api/v1/resource`).
+    - Implement query string versioning (`?version=1`).
+    - Use header versioning (`api-version: 1.0`).
+    - Maintain backward compatibility.
+
+62. **How do you manage API throttling and rate limiting in a high-traffic application using ASP.NET Core?**
+    - Implement middleware to track request counts.
+    - Use distributed caches like Redis to store rate limiting data.
+    - Apply rate limiting policies to ensure fair usage.
+    - Monitor and adjust limits based on application performance.
+
+63. **How do you secure a Web API using ASP.NET Core?**
+    - Implement HTTPS to encrypt data.
+    - Use OAuth2 or OpenID Connect for authentication.
+    - Implement token-based authentication (JWT).
+    - Validate input to prevent injection attacks.
+    - Use API gateways for additional security layers.
+
+64. **How do you handle global exception handling in a Web API using ASP.NET Core?**
+    - Use middleware for centralized exception handling.
+    - Implement a global exception filter (`ExceptionFilterAttribute`).
+    - Log exceptions using logging frameworks (e.g., Serilog, NLog).
+    - Provide user-friendly error messages and proper status codes.
+
+65. **What are the benefits and drawbacks of using API Gateways in a Web API using ASP.NET Core?**
+    - Benefits: Centralized management, security, rate limiting, load balancing, analytics.
+    - Drawbacks: Adds complexity, single point of failure, potential performance bottleneck.
+    - Useful for managing microservices architecture.
+
+66. **Can you explain the concept of middleware in a Web API using ASP.NET Core?**
+    - Middleware: Software components that process HTTP requests/responses.
+    - Used for logging, authentication, exception handling, and more.
+    - Configured in the request pipeline.
+    - Can be custom or built-in.
+
+67. **How do you document a Web API in ASP.NET Core, and what tools do you use?**
+    - Use tools like Swagger/OpenAPI for automatic documentation.
+    - Annotate API methods with XML comments.
+    - Provide examples and usage instructions.
+    - Generate interactive API documentation.
+
+68. **How do you test a Web API in ASP.NET Core, and what tools do you prefer for automated testing?**
+    - Use Postman or Insomnia for manual testing.
+    - Implement unit tests with frameworks like xUnit or NUnit.
+    - Use tools like RestSharp for integration testing.
+    - Implement continuous testing with CI/CD pipelines.
+
+69. **How do you implement rate limiting in a Web API using ASP.NET Core?**
+    - Use middleware to track request counts per client.
+    - Implement rate limiting policies (e.g., requests per minute).
+    - Return appropriate status codes (e.g., 429 Too Many Requests).
+    - Use third-party libraries like `AspNetCoreRateLimit`.
+
+70. **How do you handle large file uploads in a Web API using ASP.NET Core?**
+    - Configure maximum request size in `Startup` class.
+    - Use streaming to handle large files.
+    - Implement chunked uploads for better reliability.
+    - Validate file types and sizes for security.
+
