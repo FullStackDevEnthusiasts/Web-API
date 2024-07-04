@@ -412,3 +412,215 @@
     - Implement chunked uploads for better reliability.
     - Validate file types and sizes for security.
 
+71. **Can you explain dependency injection in ASP.NET Core?**
+    - A design pattern to achieve Inversion of Control (IoC).
+    - ASP.NET Core has built-in support for dependency injection.
+    - Configure services in `Startup.ConfigureServices`.
+    - Inject dependencies via constructor or method injection.
+
+72. **How do you configure logging in ASP.NET Core?**
+    - Use built-in logging providers (Console, Debug, EventSource, etc.).
+    - Configure logging in `appsettings.json` or `Startup.Configure`.
+    - Use third-party logging libraries like Serilog or NLog.
+    - Inject `ILogger` into controllers or services.
+
+73. **What is the role of `IHostedService` in ASP.NET Core?**
+    - Represents background tasks.
+    - Implement `IHostedService` for long-running operations.
+    - Register hosted services in `Startup.ConfigureServices`.
+    - Used for tasks like processing messages, running scheduled jobs.
+
+74. **How do you handle session state in ASP.NET Core?**
+    - Configure session middleware in `Startup.Configure`.
+    - Store session data in-memory, distributed cache, or database.
+    - Use `ISession` interface to read and write session data.
+    - Set session expiration policies.
+
+75. **What is the purpose of the `IConfiguration` interface in ASP.NET Core?**
+    - Provides access to configuration settings.
+    - Supports multiple configuration sources (JSON, XML, environment variables).
+    - Inject `IConfiguration` into services or controllers.
+    - Use configuration sections for structured data.
+
+76. **How do you implement localization in ASP.NET Core?**
+    - Use localization middleware and services.
+    - Define resource files for different languages.
+    - Inject `IStringLocalizer` or `IHtmlLocalizer` for localized strings.
+    - Configure supported cultures in `Startup.Configure`.
+
+77. **What are tag helpers in ASP.NET Core MVC?**
+    - Components that enable server-side code to create and render HTML elements.
+    - Provide a clean and readable syntax for Razor views.
+    - Built-in tag helpers for forms, links, and other HTML elements.
+    - Custom tag helpers can be created by implementing `TagHelper`.
+
+78. **How do you use ViewComponents in ASP.NET Core MVC?**
+    - Small reusable components for rendering partial views.
+    - Create by deriving from `ViewComponent` class.
+    - Invoke in views using `@Component.InvokeAsync`.
+    - Useful for encapsulating logic and markup.
+
+79. **What is SignalR and how do you use it in ASP.NET Core?**
+    - A library for adding real-time web functionality.
+    - Supports WebSockets, Server-Sent Events, and Long Polling.
+    - Configure SignalR in `Startup.Configure` and `Startup.ConfigureServices`.
+    - Use hubs to handle client-server communication.
+
+80. **How do you implement health checks in ASP.NET Core?**
+    - Use built-in health check middleware.
+    - Configure health checks in `Startup.ConfigureServices`.
+    - Define custom health check logic by implementing `IHealthCheck`.
+    - Expose health check endpoints for monitoring.
+
+81. **What is Blazor and how does it fit into ASP.NET Core?**
+    - A framework for building interactive web UIs using C# instead of JavaScript.
+    - Two hosting models: Blazor Server and Blazor WebAssembly.
+    - Integrates with ASP.NET Core for backend services.
+    - Enables full-stack development with .NET.
+
+82. **How do you manage static files in ASP.NET Core?**
+    - Use static files middleware in `Startup.Configure`.
+    - Serve files from `wwwroot` directory.
+    - Configure caching for static files.
+    - Use `FileResult` to return static files from controllers.
+
+83. **How do you implement background tasks in ASP.NET Core?**
+    - Use hosted services (`IHostedService`).
+    - Use `BackgroundService` as a base class for long-running tasks.
+    - Register services in `Startup.ConfigureServices`.
+    - Use `Task.Delay` for periodic tasks.
+
+84. **What is the purpose of the `IActionResult` interface in ASP.NET Core MVC?**
+    - Represents the result of an action method.
+    - Provides various result types (e.g., `ViewResult`, `JsonResult`, `StatusCodeResult`).
+    - Enables flexible and consistent responses.
+    - Simplifies testing of controller actions.
+
+85. **How do you handle form validation in ASP.NET Core MVC?**
+    - Use data annotation attributes on model properties.
+    - Implement server-side validation with `ModelState`.
+    - Use client-side validation with jQuery Validate.
+    - Customize validation logic by implementing `IValidatableObject` or custom attributes.
+
+86. **What are Razor Pages and how do they differ from MVC?**
+    - A page-based programming model for ASP.NET Core.
+    - Encapsulates model, view, and controller logic in a single file.
+    - Uses `@page` directive to define page routes.
+    - Simplifies development for page-focused applications.
+
+87. **How do you use gRPC in ASP.NET Core?**
+    - A high-performance RPC framework.
+    - Define service contracts using `.proto` files.
+    - Generate server and client code using gRPC tools.
+    - Configure gRPC services in `Startup.ConfigureServices`.
+
+88. **What is the difference between AddScoped, AddTransient, and AddSingleton in ASP.NET Core?**
+    - `AddScoped`: Creates a new instance per request.
+    - `AddTransient`: Creates a new instance every time it's requested.
+    - `AddSingleton`: Creates a single instance for the application's lifetime.
+    - Choose based on the desired lifetime and usage.
+
+89. **How do you use `IOptions` in ASP.NET Core?**
+    - Provides a way to manage configuration settings.
+    - Bind configuration sections to POCO classes.
+    - Inject `IOptions<T>` or `IOptionsMonitor<T>` for accessing settings.
+    - Use `IOptionsSnapshot<T>` for request-scoped options.
+
+90. **How do you configure URL rewriting and redirection in ASP.NET Core?**
+    - Use URL rewriting middleware.
+    - Configure rules for rewriting and redirection.
+    - Use built-in `RewriteOptions` for common scenarios.
+    - Custom rules can be implemented using `IRule`.
+
+91. **How do you handle user secrets in ASP.NET Core?**
+    - Use Secret Manager tool for development secrets.
+    - Store secrets in a secure location, like Azure Key Vault for production.
+    - Access secrets through `IConfiguration`.
+    - Ensure secrets are not included in source control.
+
+92. **What is `HttpClientFactory` and why should you use it in ASP.NET Core?**
+    - A factory for creating `HttpClient` instances.
+    - Provides centralized configuration and lifecycle management.
+    - Avoids common issues like socket exhaustion.
+    - Supports Polly for resilience and transient fault handling.
+
+93. **How do you implement request logging in ASP.NET Core?**
+    - Use middleware to log incoming requests and responses.
+    - Integrate logging frameworks (Serilog, NLog).
+    - Log relevant request data (headers, path, body).
+    - Ensure sensitive data is not logged.
+
+94. **How do you handle long-running requests in ASP.NET Core?**
+    - Use asynchronous programming with `async` and `await`.
+    - Implement background processing with hosted services.
+    - Use `Task.Run` for offloading work to background threads.
+    - Optimize response times with proper load balancing.
+
+95. **What are some common security best practices for ASP.NET Core applications?**
+    - Use HTTPS for all communications.
+    - Validate and sanitize user inputs.
+    - Implement proper authentication and authorization.
+    - Regularly update and patch dependencies.
+    - Use security tools for vulnerability scanning.
+
+96. **How do you manage configuration in ASP.NET Core?**
+    - Use multiple configuration sources (JSON, XML, environment variables).
+    - Access configuration settings via `IConfiguration`.
+    - Support different environments (Development, Staging, Production).
+    - Use `Options` pattern for structured settings.
+
+97. **What is the role of the `Configure` method in ASP.NET Core?**
+    - Sets up the request processing pipeline.
+    - Configure middleware components.
+    - Define routes and endpoints.
+    - Implement exception handling.
+
+98. **How do you handle file uploads in ASP.NET Core?**
+    - Use `IFormFile` for reading uploaded files.
+    - Configure request limits for file size.
+    - Save files to the server or cloud storage.
+    - Validate file types and sizes for security.
+
+99. **How do you implement caching in ASP.NET Core?**
+    - Use in-memory caching for quick access.
+    - Use distributed caching for scaling (Redis, SQL Server).
+    - Apply caching strategies (absolute expiration, sliding expiration).
+    - Implement output caching for response caching.
+
+100. **How do you handle concurrency in ASP.NET Core?**
+    - Use asynchronous programming to improve scalability.
+    - Implement locking mechanisms for critical sections.
+    - Use optimistic concurrency control with EF Core.
+    - Handle race conditions and ensure data consistency.
+
+101. **How do you create custom middleware in ASP.NET Core?**
+    - Implement `IMiddleware` or create a middleware class with `InvokeAsync` method.
+    - Register middleware in `Startup.Configure`.
+    - Process requests and responses within the middleware.
+    - Chain middleware components for complex processing.
+
+102. **What is the purpose of `IApplicationBuilder` in ASP.NET Core?**
+    - Used to configure the request pipeline.
+    - Register middleware components.
+    - Define routes and endpoints.
+    - Implement application-wide settings.
+
+103. **How do you handle cross-cutting concerns in ASP.NET Core?**
+    - Use middleware for logging, authentication, error handling.
+    - Implement action filters for validation, authorization.
+    - Utilize dependency
+
+ injection for service reuse.
+    - Encapsulate shared logic in reusable components.
+
+104. **How do you implement globalization and localization in ASP.NET Core?**
+    - Configure localization middleware.
+    - Use resource files for different languages.
+    - Set up culture-specific formatting.
+    - Enable dynamic language switching.
+
+105. **How do you deploy an ASP.NET Core application to Azure?**
+    - Use Azure App Service for web hosting.
+    - Configure deployment settings in Azure portal.
+    - Use CI/CD pipelines for automated deployments.
+    - Monitor application with Azure Application Insights.
